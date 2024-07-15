@@ -1,30 +1,15 @@
-def alarm():
+import datetime
+import time
 
-    # Infinite Loop
-
+def set_alarm(alarm_time):
+    print(f"Alarm set for {alarm_time}")
     while True:
-
-        # Set Alarm 
-
-        set_alarm = f"{hour.get()}:{minute.get()}:{second.get()}"
- 
-
-        # Wait for one seconds
-
-        time.sleep(1)
- 
-
-        # Get current time
-
         current_time = datetime.datetime.now().strftime("%H:%M:%S")
- 
+        if current_time == alarm_time:
+            print("Wake up! It's time!")
+            break
+        time.sleep(1)
 
-        # Check whether set alarm is equal to current time or not
-
-        if current_time == set_alarm:
-
-            print("Time to Wake up")
-
-            # Playing sound
-
-            winsound.PlaySound("sound.wav",winsound.SND_ASYNC)
+if __name__ == "__main__":
+    alarm_time = input("Enter the alarm time (HH:MM:SS): ")
+    set_alarm(alarm_time)
